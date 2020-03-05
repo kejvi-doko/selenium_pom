@@ -16,6 +16,7 @@ namespace UITesting.Booking.Page
 
         }
 
+        private IWebElement destinationDropDown => this.driver.FindElement(By.XPath(@"//div[2]/div/a/span"));
         private IWebElement destinationTextBox => this.driver.FindElement(By.XPath(@"//*[@id=""select2-drop""]/div/input"));
         private IWebElement checkinDateTextBox => this.driver.FindElement(By.Id("checkin"));
         private IWebElement checkoutDateTextBox => this.driver.FindElement(By.Id("checkout"));
@@ -26,6 +27,7 @@ namespace UITesting.Booking.Page
         {
             this.driver.Navigate().GoToUrl("https://www.phptravels.net/home");
 
+            destinationDropDown.Click();
             destinationTextBox.SendKeys(destination);
 
             // Wait for results to show up
