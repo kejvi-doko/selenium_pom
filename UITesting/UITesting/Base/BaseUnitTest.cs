@@ -13,9 +13,23 @@ namespace UITesting.Base
         [OneTimeSetUp]
         protected virtual void Setup()
         {
+           
             var baseChromeDrivepath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
 
-            this.driver = new ChromeDriver(baseChromeDrivepath);
+            string chromePath = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
+            string chromeVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(chromePath).ProductVersion;
+
+            bool driverExists = File.Exists($"{baseChromeDrivepath}\\chromedriver.exe");
+
+            if (driverExists)
+            {
+                this.driver = new ChromeDriver(baseChromeDrivepath);
+            }
+            else
+            {
+                throw new FileNotFoundException($"chromedriver.exe not found in path : {baseChromeDrivepath}. Download the correct version of Chrome Driver ({chromeVersion}) from https://chromedriver.storage.googleapis.com/index.html");
+            }
+            
         }
 
         [OneTimeTearDown]
