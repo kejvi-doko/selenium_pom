@@ -13,11 +13,9 @@ namespace UITesting.Booking
         [Test]
         public void SearchForHotel()
         {
-            //this.driver.Navigate().GoToUrl("https://www.phptravels.net/home");
+            LoginPage page = new LoginPage(this.driver);
 
-            //LoginPage page = new LoginPage(this.driver);
-
-            //page.Login(username: "user@phptravels.com", password: "demouser");
+            page.Login(username: "user@phptravels.com", password: "demouser");
 
             SearchHotelPage searchPage = new SearchHotelPage(this.driver);
 

@@ -39,7 +39,7 @@ namespace UITesting.Authentication.Page
             ConfirmLoginButton.Click();
 
             wait.Until(
-                SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//h3")));
+                SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//h3[contains(.,'Hi, Demo User')]")));
         }
 
     }
